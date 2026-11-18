@@ -1,0 +1,30 @@
+schema_version: 1
+runtime: transform
+id: "http-lookup"
+chip: "http-lookup"
+title: "HTTP Status Code lookup"
+icon: link
+description: Recognize a 3-digit HTTP status code and copy MDN docs or debug links
+emits: Generic
+placeholder_examples:
+  - "404"
+  - "429"
+  - "503"
+
+presentation:
+  widget: detail
+
+transform:
+  pipe:
+    - trim
+
+recognize:
+  patterns:
+    - regex: "^([1-5]\\d{2})$"
+  reps:
+    - label: MDN Spec
+      template: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{1}"
+    - label: HTTP Cat
+      template: "https://http.cat/{1}"
+    - label: Markdown Link
+      template: "[HTTP {1}](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{1})"

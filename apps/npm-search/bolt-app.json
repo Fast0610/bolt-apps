@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "id": "npm-search",
+  "title": "npm package search",
+  "role": "Web and JavaScript developers looking up package docs, versions, and bundles",
+  "saves": "Navigating to npmjs.com manually to check package names and READMEs",
+  "summary": "Type npm and a package name to search npmjs.com directly from the Bolt launcher.",
+  "author": {
+    "name": "Blessing Samuel",
+    "link": "https://dev0610-portfolio.vercel.app/"
+  },
+  "tier": 1,
+  "permissions": [
+    "opens_links:www.npmjs.com"
+  ],
+  "tests": [
+    {
+      "kind": "search",
+      "name": "single package lookup",
+      "target": "npm",
+      "query": "react",
+      "expect": "https://www.npmjs.com/search?q=react"
+    },
+    {
+      "kind": "search",
+      "name": "scoped package lookup with symbols",
+      "target": "npm",
+      "query": "@types/node",
+      "expect": "https://www.npmjs.com/search?q=%40types%2Fnode"
+    }
+  ]
+}

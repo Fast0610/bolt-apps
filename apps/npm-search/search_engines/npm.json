@@ -1,0 +1,5 @@
+{
+  "id": "npm",
+  "name": "npm package search",
+  "urlTemplate": "https://www.npmjs.com/search?q={q}"
+}

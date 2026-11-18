@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "http-lookup",
+  "title": "HTTP Status Code lookup",
+  "role": "Web, frontend, and backend developers debugging API responses and error codes",
+  "saves": "Searching MDN or web specs to recall obscure HTTP status codes and specs",
+  "summary": "Type or paste an HTTP code like 429, 503, or 404 to get its MDN documentation and HTTP Cats debug link.",
+  "author": {
+    "name": "Blessing Samuel",
+    "link": "https://dev0610-portfolio.vercel.app/"
+  },
+  "tier": 2,
+  "permissions": [
+    "copies_to_clipboard",
+    "reads_launcher_input"
+  ],
+  "tests": [
+    {
+      "kind": "recognizer",
+      "name": "recognizes 3-digit HTTP status codes",
+      "target": "http-lookup",
+      "positive": ["404", "429", "503", "200"],
+      "negative": ["40", "4290", "status", "HTTP", "see 404 for details"],
+      "expect_rep": [
+        { "input": "429", "label": "MDN Spec", "value": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429" },
+        { "input": "429", "label": "HTTP Cat", "value": "https://http.cat/429" },
+        { "input": "429", "label": "Markdown Link", "value": "[HTTP 429](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429)" }
+      ]
+    }
+  ]
+}
